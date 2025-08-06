@@ -1,6 +1,7 @@
 ## Ставим ограничения на модель
 
 - Устанавливаем `guardrails-ai`
+- Прописываем свой ключ через `guardrails configure` в терминале
 - Ищем в хабе нужный рейл, например, https://hub.guardrailsai.com/validator/guardrails/toxic_language
 - Устанавливаем недостающие компоненты (например, `nltk`)
 - Добавляем правило в скрипт
