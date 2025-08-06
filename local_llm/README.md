@@ -41,12 +41,7 @@ graph TD
 
 [Методы сжатия моделей ИИ](https://huggingface.co/docs/transformers/en/quantization/concept_guide): [GPTQ](https://huggingface.co/docs/transformers/en/quantization/gptq), [GGUF](https://huggingface.co/docs/hub/en/gguf),[FP8](https://huggingface.co/docs/transformers/en/quantization/finegrained_fp8)
 
-В нашем скрипте мы используем библиотеку [bitsandbytes](https://github.com/bitsandbytes-foundation/bitsandbytes) для 8-битного сжатия модели. Некоторые разработчики сами предоставляют доступ к сжатым моделям, например, 
-
-- Потоковая генерация ответов (постепенный вывод токенов)
-- Поддержка истории сообщений (для in-context learning)
-- 8-битная квантизация для экономии вычислительных ресурсов (добавлена в код)
-
+В нашем скрипте мы используем библиотеку [bitsandbytes](https://github.com/bitsandbytes-foundation/bitsandbytes) для 8-битного сжатия модели. Некоторые разработчики сами предоставляют доступ к сжатым моделям, например, [Qwen](https://huggingface.co/Qwen/Qwen2.5-32B-Instruct-GPTQ-Int4) или [Gemma](https://huggingface.co/google/gemma-3-27b-it-qat-q4_0-gguf)
 
 ## Используемые библиотеки
 
@@ -60,28 +55,17 @@ graph TD
 Дополнительные библиотеки для расширений:
 - `sentence-transformers` - эмбеддинги текста
 - `faiss` или `chromadb` - векторный поиск
-- `langchain` - интеграция компонентов
+- `langchain` - интеграция компонентов, например, истории поиска
 
-## Примеры использования
+## Пример использования
 
-1. Базовый запрос:
-   ```python
-   python run.py
-   > Привет! Кто ты?
-   ```
+Базовый запрос:
 
-2. С историей диалога (расширенная версия):
-   ```python
-   from collections import deque
-   chat_history = deque(maxlen=5)  # Ограничение длины истории
-   ```
-
-3. С семантическим поиском:
-   ```python
-   from sentence_transformers import SentenceTransformer
-   encoder = SentenceTransformer('all-MiniLM-L6-v2')
-   ```
-
+```python
+python run.py
+> Привет! Кто ты?
+```
+   
 ## Источники и ссылки
 
 - [Gemma на HuggingFace](https://huggingface.co/google/gemma-3-1b-it)
@@ -92,5 +76,5 @@ graph TD
 ## Установка
 
 ```bash
-pip install torch transformers bitsandbytes sentence-transformers faiss-cpu
+pip install torch transformers bitsandbytes
 ```
